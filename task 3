@@ -1,0 +1,26 @@
+class BankAccount:
+    def __init__(self, account_number: str, owner: str, balance: float = 0):
+        self.account_number = account_number
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount: float) -> None:
+        self.balance += amount
+        print(f"Deposited ${amount:.2f}. New balance: ${self.balance:.2f}")
+
+    def withdraw(self, amount: float) -> None:
+        if self.balance >= amount:
+            self.balance -= amount
+            print(f"Withdrew ${amount:.2f}. New balance: ${self.balance:.2f}")
+        else:
+            print("Insufficient balance.")
+
+    def display_balance(self) -> None:
+        print(f"Account balance: ${self.balance:.2f}")
+
+# Create an account, perform transactions, and display the balance
+account = BankAccount("1234567890", "Jay Mark", 1000)
+account.display_balance()
+account.deposit(500)
+account.withdraw(200)
+account.display_balance()
